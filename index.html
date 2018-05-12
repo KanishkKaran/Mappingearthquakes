@@ -57,7 +57,8 @@
       mark{
         background: #FAD0C4;
         color: black;
-      }
+        font-family: 'EB Garamond', serif;
+            }
       footer {
         background: #f1f1f1;
         color: #333;
@@ -169,59 +170,21 @@
   <div class="container">
 
     <div class="row">
-      <div class="col">
-        <h3>Here is a wide thing of text</h3>
-        <p>As long as it's a separate <code>.row</code> it won't interefere with the graphic. I can have this text go all the way across! It's fine! Nothing happens!</p>
-      </div>
-    </div>
-
-    <div class="row">
       <div class="col-sm-8 graphic sticky">
-        <p> Let's see an update of how the earthquakes occured<img src="" id=""></p>
+        <p>Earthquake occured in HinduKush region<img src="images/EarthquakeLocation.png" id="mountains"></p>
       </div>
       <div class="col-sm-4">
         <div class="step" id="blocks-step-one">
-          <h3>This is a step</h3>
-          <p>Right now it has a little padding on the top and bottom, and the text is all left-aligned, but you can change that easily in the CSS. It's all of the <code>.row</code> stuff.</p>
+          <h3>Hindu Kush Region</h3>
+          <p>The tremors were felt in "most parts" of the earthquake-prone country, said Mohammad Omar Mohammadi, spokesman for the national disaster management ministry.</p>
         </div>
         <div class="step" id="blocks-step-two">
-          <h3>This is another step</h3>
-          <p>Blah blah blah blah</p>
-          <p>Blah blah blah blah</p>
-          <p>Blah blah blah blah</p>
-        </div>
-        <div class="step" id="blocks-step-three">
-          <h3>This is another step</h3>
-          <p>Blah blah blah blah</p>
-          <p>Blah blah blah blah</p>
-          <p>Blah blah blah blah</p>
-        </div>
-        <div>
-          <div class="step" id="blocks-step-four">
-            <h3>This is another step</h3>
-            <p>Blah blah blah blah</p>
-            <p>Blah blah blah blah</p>
-            <p>Blah blah blah blah</p>
+          <h3><mark>Source: Times of India</mark></h3>
+          <p>In neighbouring Pakistan's city of Peshawar near the Afghan border, people rushed into the streets following the tremor, fearing aftershocks, witnesses told AFP. Earlier in the day, a magnitude 5.1 earthquake rattled parts of eastern Pakistan, near the border with Afghanistan. That quake caused a stampede at a school in the northwestern city of Bannu, injuring at least 10 students, according to a local police official.</p>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col">
-        <h3>We can also put a normal content in here</h3>
-        <p class="text-center">
-          <img src="images/cat.jpg">
-        </p>
-        <p>Not everything needs to be a sticky column-based thing!</p>
-        <p>You could even do a stack if you wanted, too.</p>
-      </div>
-    </div>
-
   </div>
-
-  <footer>
-    This is a little space at the bottom.
-  </footer>
 
   <!-- This is D3, our graphing library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
@@ -259,6 +222,6 @@
       })
   </script>
 
-  <script src='image-swapper.js'></script>
+  <script src='02-image-swapper.js'></script>
 </body>
 </html>
