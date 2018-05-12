@@ -1,0 +1,264 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+    <style>
+
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
+
+      img.block {
+        display: block;
+        border: solid #333 1p;
+        margin: 0 auto;
+      }
+
+      svg {
+        margin-bottom: 15px;
+      }
+
+      .step {
+        padding-bottom: 90px;
+        margin-bottom: 10px;
+        margin-left: auto;
+      }
+
+      .step, .row {
+        padding-top: 2rem;
+      }
+
+      .step:last-of-type {
+        padding-bottom: 250px;
+      }
+
+      .active {
+        background: beige;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      h1 {
+        font-family: 'EB Garamond', serif;
+        font-weight: 400;
+      }
+      p {
+        font-family: 'EB Garamond', serif;
+        font-weight: 100;
+        margin-left: auto;
+        margin-top: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+      }
+      mark{
+        background: #FAD0C4;
+        color: black;
+      }
+      footer {
+        background: #f1f1f1;
+        color: #333;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .bg1 {
+        background: url('backgrounds/Background-main.jpg');
+      }
+
+      .bg2 {
+        background: url('backgrounds/Background-main1.jpg');
+        background-blend-mode: lighten;
+        background-size: auto;
+      }
+
+      .background-image {
+        background-size: contain;
+        padding: 150px 50px;
+        /*
+          This means...
+          150px spacing between text and top/bottom of image
+          20px spacing between text and left/right of screen
+        */
+        color: white;
+        text-align: center;
+        text-shadow: 0 0 5px rgba(0,0,0,0.5),
+                     0 0 15px rgba(0,0,0,0.5),
+                     0 0 25px rgba(0,0,0,0.5);
+      }
+
+      .background-image h1 {
+        text-transform: uppercase;
+        font-size: 72px;
+      }
+      /*
+        End full-bleed backgrounds
+      */
+
+
+      .graphic {
+        padding-bottom: 30px;
+      }
+
+      /*
+        The following allows us to make the graphic
+        "sticky" to the top of the page. The "top"
+        attribute should probably be the same as
+        the offset for scrollama (but % instead of decimal)
+      */
+
+      .sticky {
+        position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
+        position: sticky;
+        height: fit-content;
+        /* IF YOU CHANGE THIS CHANGE THE JAVASCRIPT NEAR THE BOTTOM */
+        top: 33%;
+      }
+
+      img {
+        max-width: 75%;
+        mix-blend-mode: color-burn;
+      }
+
+      .center-image {
+        margin: 0 auto;
+        display: block;
+        padding: 15px
+      }
+    </style>
+  </head>
+</head>
+<body>
+  <div class="background-image bg1">
+  </div>
+  <div class="row" style="margin 12% 2% 2% 2%;">
+    <div class="col-sm-12">
+    <h1 align="center"3>Tremors felt in New Delhi after Afghanistan quakes</h1>
+    </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="step" id="step-one">
+          <p>India just witnessed earthquake, if you look carefully at the globe you'll notice the tremors</p>
+        </div>
+        <div class="step" id="step-two">
+          <p>The earthquake shook buildings in Afghan capital Kabul, but there were no immediate reports of damage or casualties, reported Reuters. People in Delhi and the NCR region reported feeling light earthquake tremors.
+            The quake was felt at about 4:15 pm today in the states of Punjab, Haryana and Jammu and Kashmir, a MeT Department official said. "The intensity of the earthquake, which had its epicentre in Afghanistan-Tajikistan border, measured 6.2 on the Richter Scale," the official said.
+            There were no reports of loss of life or damage to property, government officials said.</p>
+            <p><mark>Source: Times of India</mark></p>
+        </div>
+      </div>
+      <div class="col-sm-8 graphic sticky">
+        <p><img id=globe src="images/img2.gif"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="background-image bg2">
+    <h1>Thankfully no damages have been reported.<em></em></h1>
+    <h3></h3>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <h3>Here is a wide thing of text</h3>
+        <p>As long as it's a separate <code>.row</code> it won't interefere with the graphic. I can have this text go all the way across! It's fine! Nothing happens!</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8 graphic sticky">
+        <p> Let's see an update of how the earthquakes occured<img src="" id=""></p>
+      </div>
+      <div class="col-sm-4">
+        <div class="step" id="blocks-step-one">
+          <h3>This is a step</h3>
+          <p>Right now it has a little padding on the top and bottom, and the text is all left-aligned, but you can change that easily in the CSS. It's all of the <code>.row</code> stuff.</p>
+        </div>
+        <div class="step" id="blocks-step-two">
+          <h3>This is another step</h3>
+          <p>Blah blah blah blah</p>
+          <p>Blah blah blah blah</p>
+          <p>Blah blah blah blah</p>
+        </div>
+        <div class="step" id="blocks-step-three">
+          <h3>This is another step</h3>
+          <p>Blah blah blah blah</p>
+          <p>Blah blah blah blah</p>
+          <p>Blah blah blah blah</p>
+        </div>
+        <div>
+          <div class="step" id="blocks-step-four">
+            <h3>This is another step</h3>
+            <p>Blah blah blah blah</p>
+            <p>Blah blah blah blah</p>
+            <p>Blah blah blah blah</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h3>We can also put a normal content in here</h3>
+        <p class="text-center">
+          <img src="images/cat.jpg">
+        </p>
+        <p>Not everything needs to be a sticky column-based thing!</p>
+        <p>You could even do a stack if you wanted, too.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    This is a little space at the bottom.
+  </footer>
+
+  <!-- This is D3, our graphing library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+  <!-- include our scrolling library -->
+  <script src='https://unpkg.com/intersection-observer'></script>
+  <script src='https://unpkg.com/scrollama'></script>
+  <script src='stickyfill.min.js'></script>
+
+  <script>
+    /* Allow position: sticky to work in old browsers */
+    var elements = document.querySelectorAll('.sticky');
+    Stickyfill.add(elements);
+
+    // instantiate the scrollama
+    var scroller = scrollama();
+
+    scroller
+      .setup({
+        // IF YOU CHANGE THIS CHANGE THE .sticky CSS
+        offset: 0.33, // how far from the top?
+        step: '.step', // class for stepping through
+        debug: false, // shows the line
+        container: 'container'
+      })
+      .onStepEnter(function(response) {
+        // trigger the stepin event
+        d3.select(response.element).dispatch('stepin')
+        d3.select(response.element).classed('active', true)
+      })
+      .onStepExit(function(response) {
+        // trigger the stepout event
+        d3.select(response.element).dispatch('stepout')
+        d3.select(response.element).classed('active', false)
+      })
+  </script>
+
+  <script src='02-image-swapper.js'></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+## Listen for an event
+
+something.on('click', function() {
+  console.log("I got clicked")
+})
+
+## Sort based on a column
+
+    var sorted = datapoints.sort(function(a, b) {
+      return b.points - a.points
+    })
+
+## Extract all of one column
+
+    var names = datapoints.map(function(d) {
+      return d.name
+    })
+
+## Extract the max of a column
+
+    var maxPoints = d3.max(datapoints, function(d) {
+      return d.points
+    })
+
+## Update a scale
+
+If you want to update the domain or range, just use... .domain or .range, like you did when you set it originally
+
+    yPositionScale.domain([1, 4])
+
+## Update/redraw a scale
+
+Create a new axis with the updated scale, then select the axis on the page (".y-axis" or ".x-axis") and use .call with the scale name.
+
+    var yAxis = d3.axisLeft(yPositionScale)
+    svg.select(".y-axis").call(yAxis)
+
+Why? Dunno, it's just what you gotta do!
+
+

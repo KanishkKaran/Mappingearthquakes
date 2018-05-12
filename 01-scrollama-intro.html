@@ -1,0 +1,50 @@
+<html>
+<head>
+  <style>
+  .step {
+    height: 600px;
+    border: solid black 1px;
+    margin: 20px 0;
+    padding: 20px;
+  }
+
+  .active {
+    background: beige;
+  }
+  </style>
+</head>
+<body>
+  <p>We are using the <a href="https://github.com/russellgoldenberg/scrollama" target="_new">scrollama</a> library</p>
+
+  <div class='step'>Step 1</div>
+  <div class='step'>Step 2</div>
+  <div class='step'>Step 3</div>
+  <div class='step'>Step 4</div>
+  <div class='step'>Step 5</div>
+  <div class='step'>Step 6</div>
+
+  <!-- scrollama library -->
+  <script src='https://unpkg.com/intersection-observer'></script>
+  <script src='https://unpkg.com/scrollama'></script>
+  <script src='stickyfill.min.js'></script>
+
+  <script type="text/javascript">
+  const scroller = scrollama();
+  scroller
+  .setup({
+    debug: true,
+    offset:0.3,
+    step: '.step' // required - class name of trigger steps
+  })
+  .onStepEnter(function(){
+    console.log("Entering a step")
+  })
+  .onStepExit(function(){
+    console.log("Exiting a step")
+  });
+
+    // Write your scrollama code here
+
+  </script>
+</body>
+</html>
