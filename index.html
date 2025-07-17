@@ -41,19 +41,20 @@
         }
 
         .step {
-            padding-bottom: 120px;
-            margin-bottom: 20px;
+            padding-bottom: 200px;
+            margin-bottom: 50px;
             margin-left: auto;
             opacity: 0.3;
             transition: opacity 0.5s ease-in-out;
+            min-height: 300px;
         }
 
         .step, .row {
-            padding-top: 2rem;
+            padding-top: 3rem;
         }
 
         .step:last-of-type {
-            padding-bottom: 300px;
+            padding-bottom: 500px;
         }
 
         .step.active {
@@ -142,24 +143,29 @@
             position: -webkit-sticky;
             position: sticky;
             height: fit-content;
-            top: 20%;
+            top: 15%;
             z-index: 1;
         }
 
         img {
             max-width: 100%;
             height: auto;
-            transition: all 0.6s ease-in-out;
+            transition: all 0.8s ease-in-out;
         }
 
         #globe {
-            max-width: 75%;
+            max-width: 60%;
             mix-blend-mode: normal;
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         #mountains {
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            max-width: 80%;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .center-image {
@@ -302,18 +308,18 @@
                 Stickyfill.add(elements);
             }
 
-            // Initialize scrollama with better settings
+            // Initialize scrollama with more forgiving settings
             var scroller = scrollama();
 
             scroller
                 .setup({
-                    offset: 0.5,
+                    offset: 0.6,
                     step: '.step',
                     debug: false,
-                    threshold: 4
+                    threshold: 1
                 })
                 .onStepEnter(function(response) {
-                    console.log('Step enter:', response.element.id);
+                    console.log('Step enter:', response.element.id, 'progress:', response.progress);
                     d3.select(response.element).dispatch('stepin');
                     d3.select(response.element).classed('active', true);
                 })
@@ -321,6 +327,10 @@
                     console.log('Step exit:', response.element.id);
                     d3.select(response.element).dispatch('stepout');
                     d3.select(response.element).classed('active', false);
+                })
+                .onStepProgress(function(response) {
+                    // Optional: Add progress-based animations here
+                    // console.log('Step progress:', response.element.id, response.progress);
                 });
 
             // Handle window resize for smooth responsive behavior
@@ -354,18 +364,27 @@
                 imageCache[src] = img;
             });
             
-            // Smooth image transition function
+            // Debounced image transition function
+            let transitionTimeout;
             function smoothImageTransition(selector, newSrc) {
-                const img = d3.select(selector);
-                img.style('opacity', 0)
-                   .transition()
-                   .duration(300)
-                   .on('end', function() {
-                       img.attr('src', newSrc)
-                          .transition()
-                          .duration(300)
-                          .style('opacity', 1);
-                   });
+                clearTimeout(transitionTimeout);
+                transitionTimeout = setTimeout(() => {
+                    const img = d3.select(selector);
+                    const currentSrc = img.attr('src');
+                    
+                    // Only transition if source is different
+                    if (currentSrc !== newSrc) {
+                        img.style('opacity', 0)
+                           .transition()
+                           .duration(400)
+                           .on('end', function() {
+                               img.attr('src', newSrc)
+                                  .transition()
+                                  .duration(400)
+                                  .style('opacity', 1);
+                           });
+                    }
+                }, 100); // Small delay to prevent rapid firing
             }
             
             d3.select("#step-one")
