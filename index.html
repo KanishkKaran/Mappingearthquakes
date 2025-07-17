@@ -1,227 +1,342 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Earthquake Tremors in New Delhi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
 
-      svg {
-        display: block;
-        margin: 0 auto;
-      }
+        svg {
+            display: block;
+            margin: 0 auto;
+        }
 
-      img.block {
-        display: block;
-        border: solid #333 1p;
-        margin: 0 auto;
-      }
+        img.block {
+            display: block;
+            border: solid #333 1px;
+            margin: 0 auto;
+        }
 
-      svg {
-        margin-bottom: 15px;
-      }
+        svg {
+            margin-bottom: 15px;
+        }
 
-      .step {
-        padding-bottom: 90px;
-        margin-bottom: 10px;
-        margin-left: auto;
-      }
+        .step {
+            padding-bottom: 90px;
+            margin-bottom: 10px;
+            margin-left: auto;
+        }
 
-      .step, .row {
-        padding-top: 2rem;
-      }
+        .step, .row {
+            padding-top: 2rem;
+        }
 
-      .step:last-of-type {
-        padding-bottom: 250px;
-      }
+        .step:last-of-type {
+            padding-bottom: 250px;
+        }
 
-      .active {
-        background: beige;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-      h1 {
-        font-family: 'EB Garamond', serif;
-        font-weight: 400;
-      }
-      p {
-        font-family: 'EB Garamond', serif;
-        font-weight: 100;
-        margin-left: auto;
-        margin-top: auto;
-        margin-right: auto;
-        margin-bottom: auto;
-      }
-      mark{
-        background: #FAD0C4;
-        color: black;
-        font-family: 'EB Garamond', serif;
+        .active {
+            background: beige;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-family: 'EB Garamond', serif;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-family: 'EB Garamond', serif;
+            font-weight: 400;
+        }
+
+        p {
+            font-family: 'EB Garamond', serif;
+            font-weight: 100;
+            line-height: 1.6;
+        }
+
+        mark {
+            background: #FAD0C4;
+            color: black;
+            font-family: 'EB Garamond', serif;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        footer {
+            background: #f1f1f1;
+            color: #333;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .bg1 {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('backgrounds/Background-main.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .bg2 {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('backgrounds/Background-main1.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 50vh;
+        }
+
+        .background-image {
+            background-size: cover;
+            padding: 150px 50px;
+            color: white;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5),
+                         0 0 15px rgba(0,0,0,0.5),
+                         0 0 25px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background-image h1 {
+            text-transform: uppercase;
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .background-image h3 {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .graphic {
+            padding-bottom: 30px;
+        }
+
+        .sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            height: fit-content;
+            top: 33%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #globe {
+            max-width: 75%;
+            mix-blend-mode: normal;
+        }
+
+        .center-image {
+            margin: 0 auto;
+            display: block;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .main-title {
+            margin: 5% 2% 2% 2%;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .background-image h1 {
+                font-size: 2rem;
             }
-      footer {
-        background: #f1f1f1;
-        color: #333;
-        padding: 60px 0;
-        text-align: center;
-      }
-
-      .bg1 {
-        background: url('backgrounds/Background-main.jpg');
-      }
-
-      .bg2 {
-        background: url('backgrounds/Background-main1.jpg');
-        background-blend-mode: lighten;
-        background-size: auto;
-      }
-
-      .background-image {
-        background-size: contain;
-        padding: 150px 50px;
-        /*
-          This means...
-          150px spacing between text and top/bottom of image
-          20px spacing between text and left/right of screen
-        */
-        color: white;
-        text-align: center;
-        text-shadow: 0 0 5px rgba(0,0,0,0.5),
-                     0 0 15px rgba(0,0,0,0.5),
-                     0 0 25px rgba(0,0,0,0.5);
-      }
-
-      .background-image h1 {
-        text-transform: uppercase;
-        font-size: 72px;
-      }
-      /*
-        End full-bleed backgrounds
-      */
-
-
-      .graphic {
-        padding-bottom: 30px;
-      }
-
-      /*
-        The following allows us to make the graphic
-        "sticky" to the top of the page. The "top"
-        attribute should probably be the same as
-        the offset for scrollama (but % instead of decimal)
-      */
-
-      .sticky {
-        position: -webkit-sticky;
-        position: -moz-sticky;
-        position: -ms-sticky;
-        position: -o-sticky;
-        position: sticky;
-        height: fit-content;
-        /* IF YOU CHANGE THIS CHANGE THE JAVASCRIPT NEAR THE BOTTOM */
-        top: 33%;
-      }
-
-      img {
-        max-width: 75%;
-        mix-blend-mode: color-burn;
-      }
-
-      .center-image {
-        margin: 0 auto;
-        display: block;
-        padding: 15px
-      }
+            
+            .sticky {
+                position: relative;
+                top: auto;
+            }
+            
+            .step {
+                padding-bottom: 50px;
+            }
+        }
     </style>
-  </head>
 </head>
 <body>
-  <div class="background-image bg1">
-  </div>
-  <div class="row" style="margin 12% 2% 2% 2%;">
-    <div class="col-sm-12">
-    <h1 align="center"3>Tremors felt in New Delhi after Afghanistan quakes</h1>
+    <!-- Hero Section -->
+    <div class="background-image bg1">
+        <div>
+            <h1>Earthquake Alert</h1>
+            <h3>Tremors felt across New Delhi region</h3>
+        </div>
     </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="step" id="step-one">
-          <p>India just witnessed earthquake, if you look carefully at the globe you'll notice the tremors</p>
+    <!-- Main Title -->
+    <div class="main-title">
+        <div class="container">
+            <h1 class="text-center">Tremors felt in New Delhi after Afghanistan quakes</h1>
         </div>
-        <div class="step" id="step-two">
-          <p>The earthquake shook buildings in Afghan capital Kabul, but there were no immediate reports of damage or casualties, reported Reuters. People in Delhi and the NCR region reported feeling light earthquake tremors.
-            The quake was felt at about 4:15 pm today in the states of Punjab, Haryana and Jammu and Kashmir, a MeT Department official said. "The intensity of the earthquake, which had its epicentre in Afghanistan-Tajikistan border, measured 6.2 on the Richter Scale," the official said.
-            There were no reports of loss of life or damage to property, government officials said.</p>
-            <p><mark>Source: Times of India</mark></p>
-        </div>
-      </div>
-      <div class="col-sm-8 graphic sticky">
-        <p><img id=globe src="images/img2.gif"></p>
-      </div>
     </div>
-  </div>
 
-  <div class="background-image bg2">
-    <h1>Thankfully no damages have been reported.<em></em></h1>
-    <h3></h3>
-  </div>
-
-  <div class="container">
-
-    <div class="row">
-      <div class="col-sm-8 graphic sticky">
-        <p>Earthquake occured in HinduKush region<img src="images/EarthquakeLocation.png" id="mountains"></p>
-      </div>
-      <div class="col-sm-4">
-        <div class="step" id="blocks-step-one">
-          <h3>Hindu Kush Region</h3>
-          <p>The tremors were felt in "most parts" of the earthquake-prone country, said Mohammad Omar Mohammadi, spokesman for the national disaster management ministry.</p>
+    <!-- First Scrollytelling Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="step" id="step-one">
+                    <p>India just witnessed earthquake tremors. If you look carefully at the globe, you'll notice the seismic activity spreading across the region.</p>
+                </div>
+                <div class="step" id="step-two">
+                    <p>The earthquake shook buildings in Afghan capital Kabul, but there were no immediate reports of damage or casualties, reported Reuters. People in Delhi and the NCR region reported feeling light earthquake tremors.</p>
+                    <p>The quake was felt at about 4:15 pm today in the states of Punjab, Haryana and Jammu and Kashmir, a MeT Department official said. "The intensity of the earthquake, which had its epicentre in Afghanistan-Tajikistan border, measured 6.2 on the Richter Scale," the official said.</p>
+                    <p>There were no reports of loss of life or damage to property, government officials said.</p>
+                    <p><mark>Source: Times of India</mark></p>
+                </div>
+            </div>
+            <div class="col-md-8 graphic sticky">
+                <div class="text-center">
+                    <img id="globe" src="images/img2.gif" alt="Globe showing earthquake activity">
+                </div>
+            </div>
         </div>
-        <div class="step" id="blocks-step-two">
-          <h3><mark>Source: Times of India</mark></h3>
-          <p>In neighbouring Pakistan's city of Peshawar near the Afghan border, people rushed into the streets following the tremor, fearing aftershocks, witnesses told AFP. Earlier in the day, a magnitude 5.1 earthquake rattled parts of eastern Pakistan, near the border with Afghanistan. That quake caused a stampede at a school in the northwestern city of Bannu, injuring at least 10 students, according to a local police official.</p>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- This is D3, our graphing library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+    <!-- Transition Section -->
+    <div class="background-image bg2">
+        <div>
+            <h1>Thankfully no damages have been reported</h1>
+            <h3>Monitoring continues across the region</h3>
+        </div>
+    </div>
 
-  <!-- include our scrolling library -->
-  <script src='https://unpkg.com/intersection-observer'></script>
-  <script src='https://unpkg.com/scrollama'></script>
-  <script src='stickyfill.min.js'></script>
+    <!-- Second Scrollytelling Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 graphic sticky">
+                <div class="text-center">
+                    <p><strong>Earthquake occurred in Hindu Kush region</strong></p>
+                    <img src="images/EarthquakeLocation.png" id="mountains" alt="Earthquake location map">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step" id="blocks-step-one">
+                    <h3>Hindu Kush Region</h3>
+                    <p>The tremors were felt in "most parts" of the earthquake-prone country, said Mohammad Omar Mohammadi, spokesman for the national disaster management ministry.</p>
+                </div>
+                <div class="step" id="blocks-step-two">
+                    <h3>Regional Impact</h3>
+                    <p>In neighbouring Pakistan's city of Peshawar near the Afghan border, people rushed into the streets following the tremor, fearing aftershocks, witnesses told AFP.</p>
+                    <p>Earlier in the day, a magnitude 5.1 earthquake rattled parts of eastern Pakistan, near the border with Afghanistan. That quake caused a stampede at a school in the northwestern city of Bannu, injuring at least 10 students, according to a local police official.</p>
+                    <p><mark>Source: Times of India</mark></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <script>
-    /* Allow position: sticky to work in old browsers */
-    var elements = document.querySelectorAll('.sticky');
-    Stickyfill.add(elements);
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Earthquake Report. Data sources: Times of India, Reuters, AFP</p>
+        </div>
+    </footer>
 
-    // instantiate the scrollama
-    var scroller = scrollama();
+    <!-- Scripts - Load in correct order -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.12.2/intersection-observer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/scrollama@3.2.0/build/scrollama.min.js"></script>
+    <script src="stickyfill.min.js"></script>
 
-    scroller
-      .setup({
-        // IF YOU CHANGE THIS CHANGE THE .sticky CSS
-        offset: 0.33, // how far from the top?
-        step: '.step', // class for stepping through
-        debug: false, // shows the line
-        container: 'container'
-      })
-      .onStepEnter(function(response) {
-        // trigger the stepin event
-        d3.select(response.element).dispatch('stepin')
-        d3.select(response.element).classed('active', true)
-      })
-      .onStepExit(function(response) {
-        // trigger the stepout event
-        d3.select(response.element).dispatch('stepout')
-        d3.select(response.element).classed('active', false)
-      })
-  </script>
+    <script>
+        // Wait for all scripts to load
+        window.addEventListener('load', function() {
+            console.log('Page loaded, initializing scrollama...');
+            
+            // Check if required libraries are loaded
+            if (typeof d3 === 'undefined') {
+                console.error('D3 is not loaded');
+                return;
+            }
+            
+            if (typeof scrollama === 'undefined') {
+                console.error('Scrollama is not loaded');
+                return;
+            }
+            
+            // Allow position: sticky to work in old browsers
+            var elements = document.querySelectorAll('.sticky');
+            if (typeof Stickyfill !== 'undefined') {
+                Stickyfill.add(elements);
+            }
 
-  <script src='image-swapper.js'></script>
+            // Initialize scrollama
+            var scroller = scrollama();
+
+            scroller
+                .setup({
+                    offset: 0.33,
+                    step: '.step',
+                    debug: false
+                })
+                .onStepEnter(function(response) {
+                    console.log('Step enter:', response.element.id);
+                    d3.select(response.element).dispatch('stepin');
+                    d3.select(response.element).classed('active', true);
+                })
+                .onStepExit(function(response) {
+                    console.log('Step exit:', response.element.id);
+                    d3.select(response.element).dispatch('stepout');
+                    d3.select(response.element).classed('active', false);
+                });
+
+            // Image swapping logic
+            setupImageSwapping();
+        });
+
+        function setupImageSwapping() {
+            console.log('Setting up image swapping...');
+            
+            d3.select("#step-one")
+                .on('stepin', function(){
+                    console.log('Step one active - showing gif');
+                    d3.select("#globe")
+                        .attr("src", "images/img2.gif");
+                });
+
+            d3.select("#step-two")
+                .on('stepin', function(){
+                    console.log('Step two active - showing static image');
+                    d3.select("#globe")
+                        .attr("src", "images/img1.png");
+                });
+
+            d3.select("#blocks-step-one")
+                .on('stepin', function(){
+                    console.log('Blocks step one active - Delhi image');
+                    d3.select("#mountains")
+                        .attr("src", "images/Delhiupshot.jpg");
+                });
+
+            d3.select("#blocks-step-two")
+                .on('stepin', function(){
+                    console.log('Blocks step two active - Rajasthan image');
+                    d3.select("#mountains")
+                        .attr("src", "images/RajasthanUpshot.jpg");
+                });
+        }
+
+        // Fallback error handling
+        window.addEventListener('error', function(e) {
+            console.error('Script error:', e.message, e.filename, e.lineno);
+        });
+    </script>
 </body>
 </html>
