@@ -7,9 +7,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
     <style>
+        /* Smooth scrolling and performance optimizations */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* GPU acceleration for smooth animations */
+        .step, .sticky, img {
+            transform: translateZ(0);
+            will-change: transform, opacity;
         }
 
         svg {
@@ -28,9 +41,11 @@
         }
 
         .step {
-            padding-bottom: 90px;
-            margin-bottom: 10px;
+            padding-bottom: 120px;
+            margin-bottom: 20px;
             margin-left: auto;
+            opacity: 0.3;
+            transition: opacity 0.5s ease-in-out;
         }
 
         .step, .row {
@@ -38,13 +53,16 @@
         }
 
         .step:last-of-type {
-            padding-bottom: 250px;
+            padding-bottom: 300px;
         }
 
-        .active {
-            background: beige;
-            padding: 10px;
-            border-radius: 5px;
+        .step.active {
+            opacity: 1;
+            background: rgba(250, 208, 196, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            transform: translateX(0);
+            transition: all 0.5s ease-in-out;
         }
 
         h1 {
@@ -124,17 +142,24 @@
             position: -webkit-sticky;
             position: sticky;
             height: fit-content;
-            top: 33%;
+            top: 20%;
+            z-index: 1;
         }
 
         img {
             max-width: 100%;
             height: auto;
+            transition: all 0.6s ease-in-out;
         }
 
         #globe {
             max-width: 75%;
             mix-blend-mode: normal;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        #mountains {
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
         }
 
         .center-image {
@@ -277,14 +302,15 @@
                 Stickyfill.add(elements);
             }
 
-            // Initialize scrollama
+            // Initialize scrollama with better settings
             var scroller = scrollama();
 
             scroller
                 .setup({
-                    offset: 0.33,
+                    offset: 0.5,
                     step: '.step',
-                    debug: false
+                    debug: false,
+                    threshold: 4
                 })
                 .onStepEnter(function(response) {
                     console.log('Step enter:', response.element.id);
@@ -297,6 +323,14 @@
                     d3.select(response.element).classed('active', false);
                 });
 
+            // Handle window resize for smooth responsive behavior
+            window.addEventListener('resize', function() {
+                scroller.resize();
+            });
+
+            // Smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+
             // Image swapping logic
             setupImageSwapping();
         });
@@ -304,32 +338,58 @@
         function setupImageSwapping() {
             console.log('Setting up image swapping...');
             
+            // Preload images for smooth transitions
+            const imageCache = {};
+            const imagesToPreload = [
+                'images/img1.png',
+                'images/img2.gif',
+                'images/Delhiupshot.jpg',
+                'images/RajasthanUpshot.jpg',
+                'images/EarthquakeLocation.png'
+            ];
+            
+            imagesToPreload.forEach(src => {
+                const img = new Image();
+                img.src = src;
+                imageCache[src] = img;
+            });
+            
+            // Smooth image transition function
+            function smoothImageTransition(selector, newSrc) {
+                const img = d3.select(selector);
+                img.style('opacity', 0)
+                   .transition()
+                   .duration(300)
+                   .on('end', function() {
+                       img.attr('src', newSrc)
+                          .transition()
+                          .duration(300)
+                          .style('opacity', 1);
+                   });
+            }
+            
             d3.select("#step-one")
                 .on('stepin', function(){
                     console.log('Step one active - showing gif');
-                    d3.select("#globe")
-                        .attr("src", "images/img2.gif");
+                    smoothImageTransition("#globe", "images/img2.gif");
                 });
 
             d3.select("#step-two")
                 .on('stepin', function(){
                     console.log('Step two active - showing static image');
-                    d3.select("#globe")
-                        .attr("src", "images/img1.png");
+                    smoothImageTransition("#globe", "images/img1.png");
                 });
 
             d3.select("#blocks-step-one")
                 .on('stepin', function(){
                     console.log('Blocks step one active - Delhi image');
-                    d3.select("#mountains")
-                        .attr("src", "images/Delhiupshot.jpg");
+                    smoothImageTransition("#mountains", "images/Delhiupshot.jpg");
                 });
 
             d3.select("#blocks-step-two")
                 .on('stepin', function(){
                     console.log('Blocks step two active - Rajasthan image');
-                    d3.select("#mountains")
-                        .attr("src", "images/RajasthanUpshot.jpg");
+                    smoothImageTransition("#mountains", "images/RajasthanUpshot.jpg");
                 });
         }
 
