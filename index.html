@@ -41,26 +41,26 @@
         }
 
         .step {
-            padding-bottom: 200px;
-            margin-bottom: 50px;
+            padding-bottom: 400px;
+            margin-bottom: 100px;
             margin-left: auto;
             opacity: 0.3;
             transition: opacity 0.5s ease-in-out;
-            min-height: 300px;
+            min-height: 500px;
         }
 
         .step, .row {
-            padding-top: 3rem;
+            padding-top: 4rem;
         }
 
         .step:last-of-type {
-            padding-bottom: 500px;
+            padding-bottom: 800px;
         }
 
         .step.active {
             opacity: 1;
             background: rgba(250, 208, 196, 0.2);
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             transform: translateX(0);
             transition: all 0.5s ease-in-out;
@@ -224,18 +224,31 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="step" id="step-one">
+                    <h3>Earthquake Alert</h3>
                     <p>India just witnessed earthquake tremors. If you look carefully at the globe, you'll notice the seismic activity spreading across the region.</p>
+                    <p>The tremors originated from a powerful earthquake in the Afghanistan-Tajikistan border region, sending shockwaves across South Asia.</p>
                 </div>
                 <div class="step" id="step-two">
+                    <h3>Impact Assessment</h3>
                     <p>The earthquake shook buildings in Afghan capital Kabul, but there were no immediate reports of damage or casualties, reported Reuters. People in Delhi and the NCR region reported feeling light earthquake tremors.</p>
-                    <p>The quake was felt at about 4:15 pm today in the states of Punjab, Haryana and Jammu and Kashmir, a MeT Department official said. "The intensity of the earthquake, which had its epicentre in Afghanistan-Tajikistan border, measured 6.2 on the Richter Scale," the official said.</p>
-                    <p>There were no reports of loss of life or damage to property, government officials said.</p>
+                    <p>The quake was felt at about 4:15 pm today in the states of Punjab, Haryana and Jammu and Kashmir, a MeT Department official said.</p>
+                </div>
+                <div class="step" id="step-three">
+                    <h3>Magnitude and Scale</h3>
+                    <p>"The intensity of the earthquake, which had its epicentre in Afghanistan-Tajikistan border, measured 6.2 on the Richter Scale," the official said.</p>
+                    <p>This magnitude places it in the category of strong earthquakes, capable of causing significant damage in populated areas, though fortunately no casualties were reported.</p>
+                </div>
+                <div class="step" id="step-four">
+                    <h3>No Damage Reported</h3>
+                    <p>There were no reports of loss of life or damage to property, government officials said. Emergency services remained on high alert throughout the affected regions.</p>
+                    <p>Local authorities conducted immediate assessments of critical infrastructure including bridges, hospitals, and government buildings.</p>
                     <p><mark>Source: Times of India</mark></p>
                 </div>
             </div>
             <div class="col-md-8 graphic sticky">
                 <div class="text-center">
                     <img id="globe" src="images/img2.gif" alt="Globe showing earthquake activity">
+                    <p class="mt-3"><em>Interactive globe showing seismic activity patterns</em></p>
                 </div>
             </div>
         </div>
@@ -256,18 +269,30 @@
                 <div class="text-center">
                     <p><strong>Earthquake occurred in Hindu Kush region</strong></p>
                     <img src="images/EarthquakeLocation.png" id="mountains" alt="Earthquake location map">
+                    <p class="mt-3"><em>Detailed analysis of the affected region</em></p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="step" id="blocks-step-one">
                     <h3>Hindu Kush Region</h3>
                     <p>The tremors were felt in "most parts" of the earthquake-prone country, said Mohammad Omar Mohammadi, spokesman for the national disaster management ministry.</p>
+                    <p>The Hindu Kush region is known for its high seismic activity due to the collision of the Indian and Eurasian tectonic plates.</p>
                 </div>
                 <div class="step" id="blocks-step-two">
-                    <h3>Regional Impact</h3>
+                    <h3>Cross-Border Impact</h3>
                     <p>In neighbouring Pakistan's city of Peshawar near the Afghan border, people rushed into the streets following the tremor, fearing aftershocks, witnesses told AFP.</p>
+                    <p>The earthquake's effects were felt across multiple countries, demonstrating the interconnected nature of seismic activity in the region.</p>
+                </div>
+                <div class="step" id="blocks-step-three">
+                    <h3>Previous Incidents</h3>
                     <p>Earlier in the day, a magnitude 5.1 earthquake rattled parts of eastern Pakistan, near the border with Afghanistan. That quake caused a stampede at a school in the northwestern city of Bannu, injuring at least 10 students, according to a local police official.</p>
-                    <p><mark>Source: Times of India</mark></p>
+                    <p>This series of earthquakes highlights the ongoing geological instability in the region.</p>
+                </div>
+                <div class="step" id="blocks-step-four">
+                    <h3>Monitoring and Response</h3>
+                    <p>Seismological departments across the region continue to monitor for aftershocks and assess the long-term implications of this seismic activity.</p>
+                    <p>Emergency response teams remain on standby in all affected areas, prepared to respond to any subsequent geological events.</p>
+                    <p><mark>Source: Times of India, Reuters, AFP</mark></p>
                 </div>
             </div>
         </div>
@@ -399,16 +424,40 @@
                     smoothImageTransition("#globe", "images/img1.png");
                 });
 
+            d3.select("#step-three")
+                .on('stepin', function(){
+                    console.log('Step three active - showing gif again');
+                    smoothImageTransition("#globe", "images/img2.gif");
+                });
+
+            d3.select("#step-four")
+                .on('stepin', function(){
+                    console.log('Step four active - showing static image');
+                    smoothImageTransition("#globe", "images/img1.png");
+                });
+
             d3.select("#blocks-step-one")
                 .on('stepin', function(){
-                    console.log('Blocks step one active - Delhi image');
-                    smoothImageTransition("#mountains", "images/Delhiupshot.jpg");
+                    console.log('Blocks step one active - showing location');
+                    smoothImageTransition("#mountains", "images/EarthquakeLocation.png");
                 });
 
             d3.select("#blocks-step-two")
                 .on('stepin', function(){
-                    console.log('Blocks step two active - Rajasthan image');
+                    console.log('Blocks step two active - Delhi image');
+                    smoothImageTransition("#mountains", "images/Delhiupshot.jpg");
+                });
+
+            d3.select("#blocks-step-three")
+                .on('stepin', function(){
+                    console.log('Blocks step three active - Rajasthan image');
                     smoothImageTransition("#mountains", "images/RajasthanUpshot.jpg");
+                });
+
+            d3.select("#blocks-step-four")
+                .on('stepin', function(){
+                    console.log('Blocks step four active - back to location');
+                    smoothImageTransition("#mountains", "images/EarthquakeLocation.png");
                 });
         }
 
